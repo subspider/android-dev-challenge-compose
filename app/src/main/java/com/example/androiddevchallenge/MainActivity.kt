@@ -15,18 +15,29 @@
  */
 package com.example.androiddevchallenge
 
-
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -49,28 +60,28 @@ private val allPuppies = listOf(
         "Bob",
         9,
         R.drawable.dog1,
-        "I'm a gorgeous dog with 9 Year and I do think i fit your family."
+        "I'm a gorgeous dog with 9 Year and I do think I fit your family."
     ),
     Puppy(
         2,
         "Jake",
         2,
         R.drawable.dog2,
-        "I'm a gorgeous dog with 2 Year and I do think i fit your family."
+        "I'm a gorgeous dog with 2 Year and I do think I fit your family."
     ),
     Puppy(
         3,
         "Star",
         1,
         R.drawable.dog3,
-        "I'm a gorgeous dog with 1 Year and I do think i fit your family."
+        "I'm a gorgeous dog with 1 Year and I do think I fit your family."
     ),
     Puppy(
         4,
         "Moon",
         3,
         R.drawable.dog4,
-        "I'm a gorgeous dog with 3 Year and I do think i fit your family."
+        "I'm a gorgeous dog with 3 Year and I do think I fit your family."
     )
 )
 
@@ -104,7 +115,8 @@ fun MyApp() {
                         puppies = allPuppies,
                         onClick = {
                             navController.navigate("details/${it.id}")
-                        })
+                        }
+                    )
                 }
                 composable("details/{id}") { navBackStackEntry ->
                     val selectedPuppyId = navBackStackEntry.arguments?.getString("id")
@@ -152,7 +164,6 @@ fun PuppyListContent(
         }
     }
 }
-
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
@@ -211,5 +222,3 @@ fun DetailPuppy(puppy: Puppy) {
 fun DarkPreviewDogDetails() {
     DetailPuppy(puppy = allPuppies[1])
 }
-
-
